@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Canalweb_Alert>
+            <version>1.0.0</version>
+        </Canalweb_Alert>
+    </modules>
+    <frontend>
+        <routers>
+            <cw_alert>
+                <use>standard</use>
+                <args>
+                    <module>Canalweb_Alert</module>
+                    <frontName>alert</frontName>
+                </args>
+            </cw_alert>
+        </routers>
+    </frontend>
+    <global>
+        <template>
+            <email>
+                <alert_email>
+                    <label>CanalwebAlert email</label>
+                    <file>canalweb_alert_email.html</file>
+                    <type>html</type>
+                </alert_email>
+            </email>
+        </template>
+        <models>
+            <canalweb_alert>
+                <class>Canalweb_Alert_Model</class>
+            </canalweb_alert>
+        </models>
+        <resources>
+         <alert_setup>
+              <setup>
+                  <module>Canalweb_Alert</module>
+              </setup>
+              <connection>
+                  <use>core_setup</use>
+              </connection>
+          </alert_setup>
+        </resources>
+        <helpers>
+           <alert>
+               <class>Canalweb_Alert_Helper</class>
+            </alert>
+        </helpers>
+    </global>
+    <crontab>
+          <jobs>
+              <send_alerts>
+                  <schedule>
+                      <cron_expr>0 8 * * *</cron_expr>
+                  </schedule>
+                  <run>
+                      <model>canalweb_alert/alert::sendAlerts</model>
+                  </run>
+              </send_alerts>
+          </jobs>
+    </crontab>
+</config>

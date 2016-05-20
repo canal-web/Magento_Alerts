@@ -1,0 +1,14 @@
+{
+    "name": "canal-web/magento-alerts",
+    "type": "magento-module",
+    "description": "Magento module saving and sending alerts",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "authors":[
+      {
+            "name":"Fabio Cerqueira",
+            "email":"fabio@canal-web.fr"
+        }
+    ]
+}

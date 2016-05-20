@@ -1,0 +1,9 @@
+src/app/code/community/Alert/Helper                           app/code/community/Alert/Helper                          
+src/app/code/community/Alert/Model                            app/code/community/Alert/Model                           
+src/app/code/community/Alert/controllers                      app/code/community/Alert/controllers                     
+src/app/code/community/Alert/data                             app/code/community/Alert/data                            
+src/app/code/community/Alert/etc                              app/code/community/Alert/etc                             
+src/app/code/community/Alert/sql                              app/code/community/Alert/sql                             
+src/app/design/frontend/base/default/template/alerts          app/design/frontend/base/default/template/alerts         
+src/app/etc/modules/Canalweb_Alert.xml                        app/etc/modules/Canalweb_Alert.xml                       
+src/app/locale/fr_FR/template/email/canalweb_alert_email.html app/locale/fr_FR/template/email/canalweb_alert_email.html

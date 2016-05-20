@@ -1,0 +1,69 @@
+<?php
+$read = Mage::getSingleton('core/resource')->getConnection('core_read');
+ $brands = $read->fetchAll('SELECT * FROM alerte_marques');
+
+ $brand_options = array();
+ foreach ($brands as $brand) {
+   $brand_options[$brand['nom']] = '<option value="' . $brand['id'] . '">' . $brand['nom'] . '</option>';
+ }
+ ksort($brand_options);
+ ?>
+<form action="/alert/index/save" type="post" id="alerteForm">
+    <div class="wrapper_select gr-6">
+        <select name="marque" id="marque" class="validate-select">
+            <option selected="selected" value="none"><?php echo __('Marque') ?></option>
+            <?php echo implode('', $brand_options); ?>
+        </select>
+    </div>
+    <div class="wrapper_select gr-6">
+        <select name="modele" id="modele" class="validate-select">
+            <option selected="selected" value="none"><?php echo __('Modèle') ?></option>
+        </select>
+    </div>
+    <input placeholder="<?php echo __('Votre adresse email') ?>" type="email" name="mail" class="required-entry validate-email">
+    <?php echo $this->getBlockHtml('formkey') ?>
+    <input type="submit" value="<?php echo __('Valider') ?>" class="button btn-maincolor">
+</form>
+
+<script type="text/javascript">
+//<![CDATA[
+  (function($) {
+    $('#marque').change(function(){
+      $.ajax({
+        url: "/alert/index/models/brand/" + $(this).val(),
+        beforeSend: function(){
+          $('#modele').prop('disabled', 'disabled');
+        }
+      })
+      .done(function( data ) {
+        $('#modele').empty();
+        if(data.length > 0){
+          $(data).each(function(key, val){
+            $('#modele').append('<option value="' + val.nom + '">' + val.nom + '</option>');
+          });
+        }
+        else {
+          $('#modele').append('<option selected="selected" value="none">Modèle</option>');
+        }
+
+        // Sort options alphabetically.
+        var options = $('#modele option');
+        var arr = options.map(function(_, o) { return { t: $(o).text(), v: o.value }; }).get();
+        arr.sort(function(o1, o2) {
+          var t1 = o1.t.toLowerCase(), t2 = o2.t.toLowerCase();
+          return o1.t > o2.t ? 1 : o1.t < o2.t ? -1 : 0;
+        });
+        options.each(function(i, o) {
+          o.value = arr[i].v;
+          $(o).text(arr[i].t);
+        });
+
+        $('#modele').prop('disabled', false);
+        // console.log(data);
+      });
+    });
+  })(jQuery);
+
+  var alerteForm = new VarienForm('alerteForm');
+//]]>
+</script>
