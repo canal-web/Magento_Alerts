@@ -2,3 +2,4 @@ src/app/code/community/Canalweb/Alert                         app/code/community
 src/app/design/frontend/base/default/template/alerts          app/design/frontend/base/default/template/alerts         
 src/app/etc/modules/Canalweb_Alert.xml                        app/etc/modules/Canalweb_Alert.xml                       
 src/app/locale/fr_FR/template/email/canalweb_alert_email.html app/locale/fr_FR/template/email/canalweb_alert_email.html
+src/media/modele.xml                                          media/modele.xml                                         
