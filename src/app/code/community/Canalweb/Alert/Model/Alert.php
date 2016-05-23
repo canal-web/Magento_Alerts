@@ -85,7 +85,7 @@ class Canalweb_Alert_Model_Alert extends Mage_Core_Model_Abstract
                 $variables['content'] = ($count > 1)
                     ? 'Nous avons ' . $count . ' nouvelles occasions qui correspondent à votre alerte : '
                     : 'Nous avons ' . $count . ' nouvelle occasion qui correspond à votre alerte : ';
-                $variables['content'] .= '<span style="color:#ff780a">' . $alert['marque'] . ' ' . $alert['modele'] . '<span>';
+                $variables['content'] .= '<span style="font-weight:bold;">' . $alert['marque'] . ' ' . $alert['modele'] . '<span>';
 
                 $html = $emailTemplate->getProcessedTemplate($variables);
 
