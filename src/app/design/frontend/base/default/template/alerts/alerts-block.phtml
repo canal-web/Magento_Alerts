@@ -8,7 +8,7 @@ $read = Mage::getSingleton('core/resource')->getConnection('core_read');
  }
  ksort($brand_options);
  ?>
-<form action="/alert/index/save" type="post" id="alerteForm">
+<form action="/alert/index/save" method="post" id="alerteForm">
     <div class="wrapper_select gr-6">
         <select name="marque" id="marque" class="validate-select">
             <option selected="selected" value="none"><?php echo __('Marque') ?></option>
